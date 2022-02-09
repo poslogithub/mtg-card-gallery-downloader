@@ -14,11 +14,16 @@ MTGA自動実況ツール+ゆかりねっとコネクターNeo(MTGカード支�
 
 1. downloader.exeを実行する
 2. 「Card Image Gallery URL」にカード画像をダウンロードしたいCard Image GalleryのURLの入力する。
-   注意：Card Image GalleryのURLには「https://magic.wizards.com/」で始まるものと、
-   　　　「https://mtg-jp.com/」で始まるものの2種類が存在します。
-   　　　本ツールは「https://magic.wizards.com/」で始まるCard Image Galleryのみ対応しています。
+   注意：Card Image GalleryのURLには「 https://magic.wizards.com/ 」で始まるものと、
+   　　　「 https://mtg-jp.com/ 」で始まるものの2種類が存在します。
+   　　　本ツールは前者の「 https://magic.wizards.com/ 」で始まるCard Image Galleryのみ対応しています。
 3. 「保存先フォルダ」にゆかりねっとコネクターNeo(MTGカード支援プラグイン)のキャッシュフォルダを指定する。
 4. 「実行」ボタンを押下する。
+   ダウンロード状況はプロンプト（黒背景のウィンドウ）に表示される。
+
+## 配布場所
+
+https://github.com/poslogithub/binary-dist/tree/main/mtg-card-gallery-downloader
 
 ## 連絡先
 
