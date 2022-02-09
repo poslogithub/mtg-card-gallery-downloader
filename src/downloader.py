@@ -25,7 +25,7 @@ class Downloader(Frame):
 
         # GUI
         self.master.title("M:tG Card Image Downloader")
-        self.master.geometry("800x180")
+        self.master.geometry("800x140")
         self.master_frame = Frame(self.master)
         self.master_frame.pack()
         self.url_label = Label(self.master_frame, text="Card Image Gallery URL: ", anchor="w")
@@ -34,20 +34,22 @@ class Downloader(Frame):
         self.url_entry.grid(row=0, column=1, sticky=W + E, padx=5, pady=5)
         self.url_button = Button(self.master_frame, text="　開く　", command=self.push_url_button)
         self.url_button.grid(row=0, column=2, sticky=W + E, padx=5, pady=5)
+        """ 
         self.ext_label = Label(self.master_frame, text="画像ファイルの拡張子: ", anchor="w")
         self.ext_label.grid(row=1, column=0, sticky=W, padx=5, pady=5)
         self.ext_entry = Entry(self.master_frame, textvariable=self.sv_ext, width=8)
-        self.ext_entry.grid(row=1, column=1, sticky=W, padx=5, pady=5)
+        self.ext_entry.grid(row=1, column=1, sticky=W, padx=5, pady=5) 
+        """
         self.dir_label = Label(self.master_frame, text="保存先フォルダ: ", anchor="w")
-        self.dir_label.grid(row=2, column=0, sticky=W, padx=5, pady=5)
+        self.dir_label.grid(row=1, column=0, sticky=W, padx=5, pady=5)
         self.dir_entry = Entry(self.master_frame, textvariable=self.sv_dir, width=44)
-        self.dir_entry.grid(row=2, column=1, sticky=W + E, padx=5, pady=5)
+        self.dir_entry.grid(row=1, column=1, sticky=W + E, padx=5, pady=5)
         self.dir_button = Button(self.master_frame, text="　参照　", command=self.push_dir_button)
-        self.dir_button.grid(row=2, column=2, sticky=W + E, padx=5, pady=5)
+        self.dir_button.grid(row=1, column=2, sticky=W + E, padx=5, pady=5)
         self.overwrite_checkbutton = Checkbutton(self.master_frame, text="既存ファイルを上書きする", variable=self.bv_overwrite)
-        self.overwrite_checkbutton.grid(row=3, column=1, sticky=W, padx=5, pady=5)
+        self.overwrite_checkbutton.grid(row=2, column=1, sticky=W, padx=5, pady=5)
         self.download_button = Button(self.master_frame, text="　実行　", command=self.push_download_button)
-        self.download_button.grid(row=4, column=2, sticky=W + E, padx=5, pady=5)
+        self.download_button.grid(row=3, column=2, sticky=W + E, padx=5, pady=5)
 
     def push_url_button(self):
         webbrowser.open(self.sv_url.get())

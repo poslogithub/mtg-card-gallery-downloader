@@ -14,7 +14,7 @@ class DownloaderConfigFile(ConfigFile):
     def __init__(self, path=None):
         super().__init__(path)
         self.config = {
-            ConfigKey.URL: "https://magic.wizards.com/ja/content/jparchives",
+            ConfigKey.URL: "https://magic.wizards.com/ja/articles/archive/card-image-gallery/kamigawa-neon-dynasty",
             ConfigKey.EXT: "jpg",
             ConfigKey.DIR: expanduser('~'),
             ConfigKey.OVERWRITE: False
