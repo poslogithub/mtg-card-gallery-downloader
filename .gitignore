@@ -112,5 +112,5 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
-config.json
-*.ico
+src/config.json
+src/icon.ico
