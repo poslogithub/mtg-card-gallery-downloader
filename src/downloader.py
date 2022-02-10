@@ -1,4 +1,4 @@
-from os.path import basename, expanduser
+from os.path import expanduser
 from tkinter import BooleanVar, Button, Frame, StringVar, Tk, E, W, filedialog
 from tkinter.filedialog import askdirectory
 from tkinter.ttk import Checkbutton, Entry, Label
