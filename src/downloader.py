@@ -19,7 +19,6 @@ class Downloader(Frame):
         self.config_file = DownloaderConfigFile(self.CONFIG_PATH)
         self.config = self.config_file.load()
         self.sv_url = StringVar(value=self.config.get(ConfigKey.URL))
-        self.sv_ext = StringVar(value=self.config.get(ConfigKey.EXT))
         self.sv_dir = StringVar(value=self.config.get(ConfigKey.DIR))
         self.bv_overwrite = BooleanVar(value=self.config.get(ConfigKey.OVERWRITE))
 
@@ -34,12 +33,6 @@ class Downloader(Frame):
         self.url_entry.grid(row=0, column=1, sticky=W + E, padx=5, pady=5)
         self.url_button = Button(self.master_frame, text="　開く　", command=self.push_url_button)
         self.url_button.grid(row=0, column=2, sticky=W + E, padx=5, pady=5)
-        """ 
-        self.ext_label = Label(self.master_frame, text="画像ファイルの拡張子: ", anchor="w")
-        self.ext_label.grid(row=1, column=0, sticky=W, padx=5, pady=5)
-        self.ext_entry = Entry(self.master_frame, textvariable=self.sv_ext, width=8)
-        self.ext_entry.grid(row=1, column=1, sticky=W, padx=5, pady=5) 
-        """
         self.dir_label = Label(self.master_frame, text="保存先フォルダ: ", anchor="w")
         self.dir_label.grid(row=1, column=0, sticky=W, padx=5, pady=5)
         self.dir_entry = Entry(self.master_frame, textvariable=self.sv_dir, width=44)
@@ -69,7 +62,6 @@ class Downloader(Frame):
 
     def save_config(self):
         self.config[ConfigKey.URL] = self.sv_url.get()
-        self.config[ConfigKey.EXT] = self.sv_ext.get()
         self.config[ConfigKey.DIR] = self.sv_dir.get()
         self.config[ConfigKey.OVERWRITE] = self.bv_overwrite.get()
         self.config_file.save(self.config)
@@ -86,7 +78,6 @@ class Downloader(Frame):
 
         parser = MyHTMLParser(
             dir=self.config[ConfigKey.DIR], 
-            ext=self.config[ConfigKey.EXT],
             overwrite=self.config[ConfigKey.OVERWRITE])
         parser.feed(html)
 
