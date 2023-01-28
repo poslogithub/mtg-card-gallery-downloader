@@ -1,5 +1,5 @@
 from html.parser import HTMLParser
-from urllib.request import urlopen
+from urllib.request import urlopen, unquote
 from os.path import expanduser, join, exists
 
 class MyHTMLParser(HTMLParser):
@@ -14,18 +14,25 @@ class MyHTMLParser(HTMLParser):
             src = None
             ext = None
             for attr in attrs:
-                if attr[0] == 'alt':
-                    alt = attr[1].strip()
-                if attr[0] == 'src':
-                    src = attr[1].strip()
-                    ext = src.split('.')[-1]
+                if len(attr) >= 2:
+                    if attr[0] == 'alt' and attr[1]:
+                        alt = attr[1].strip()
+                        alt = alt.replace("\\'", '')
+                        alt = alt.replace('\\x', '%')
+                        alt = unquote(alt)
+                    if attr[0] == 'src' and attr[1]:
+                        src = attr[1].strip()
+                        src = src.replace("\\'", '')
+                        if src.startswith('//'):
+                            src = 'https:' + src
+                        ext = src.split('.')[-1]
             if alt and src:
                 filename = alt+"."+ext
                 path = join(self.dir, filename)
                 if not exists(path) or self.overwrite:
+                    print(filename+"をダウンロード中... ", end='')
                     try:
                         with urlopen(src) as res:
-                            print(filename+"をダウンロード中... ", end='')
                             with open(path, 'wb') as f:
                                 f.write(res.read())
                             print("完了。")
