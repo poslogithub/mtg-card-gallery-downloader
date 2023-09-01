@@ -39,3 +39,27 @@ class MyHTMLParser(HTMLParser):
                     except Exception as e:
                         print("失敗。")
                         print(e.args)
+        elif tag == 'magic-card':
+            name = None
+            face = None
+            ext = None
+            for attr in attrs:
+                if len(attr) >= 2:
+                    if attr[0] == 'name' and attr[1]:
+                        name = attr[1]
+                    if attr[0] == 'face' and attr[1]:
+                        face = attr[1]
+                        ext = face.split('.')[-1]
+            if name and face:
+                filename = name+"."+ext
+                path = join(self.dir, filename)
+                if not exists(path) or self.overwrite:
+                    print(filename+"をダウンロード中... ", end='')
+                    try:
+                        with urlopen(face) as res:
+                            with open(path, 'wb') as f:
+                                f.write(res.read())
+                            print("完了。")
+                    except Exception as e:
+                        print("失敗。")
+                        print(e.args)
