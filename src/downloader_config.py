@@ -1,5 +1,4 @@
 from config import ConfigFile
-from os import getenv
 from os.path import expanduser
 
 class ConfigKey():
@@ -18,7 +17,7 @@ class DownloaderConfigFile(ConfigFile):
         self.config = {
             ConfigKey.URL: "https://magic.wizards.com/ja/news/card-image-gallery/phyrexia-all-will-be-one",
             ConfigKey.FILE: "",
-            ConfigKey.FILE_DIR: getenv('HOME')+"\Downloads",
+            ConfigKey.FILE_DIR: expanduser('~')+"\Downloads",
             ConfigKey.DIR: expanduser('~'),
             ConfigKey.OVERWRITE: False
         }
